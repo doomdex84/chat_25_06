@@ -11,4 +11,3 @@ public class Chat2506Application {
     }
 
 }
-asdasdwqwe12;
