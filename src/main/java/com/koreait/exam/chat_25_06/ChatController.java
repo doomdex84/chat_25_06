@@ -30,4 +30,15 @@ public class ChatController {
                 new writeChatMessageResponse(message.getId())
         );
     }
+
+    @GetMapping("/messages")
+    @ResponseBody
+    public RsData<List<ChatMessage>> showMessages() {
+
+        return new RsData<>(
+                "S-1",
+                "성공",
+                chatMessages
+        );
+    }
 }
