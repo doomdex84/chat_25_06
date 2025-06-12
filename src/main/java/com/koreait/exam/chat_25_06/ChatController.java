@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@RequestMapping("/chat")
-public class ChatController {
+@@ -14,21 +12,14 @@ public class ChatController {
 
     private List<ChatMessage> chatMessages = new ArrayList<>();
 
-    public record writeChatMessageResponse(long id, String authorName, String content) {Add commentMore actions
+    public record writeChatMessageResponse(long id, String authorName, String content) {
+
 
     }
 
@@ -33,16 +32,13 @@ public class ChatController {
     @PostMapping("/writeMessage")
     @ResponseBody
     public RsData<writeChatMessageResponse> writeMessage(@RequestBody writeChatMessageRequest req) {
-        ChatMessage message = new ChatMessage(req.authorName, req.content);
-
-        chatMessages.add(message);
-
-        return new RsData<>(
-                "S-1",
-                "메세지가 작성됨",
-                new writeChatMessageResponse(message.getId(), message.getAuthorName(), message.getContent())
+        @@ -43,14 +34,18 @@ public RsData<writeChatMessageResponse> writeMessage(@RequestBody writeChatMessa
         );
     }
+
+
+
+
 
     @GetMapping("/messages")
     @ResponseBody
