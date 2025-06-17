@@ -110,8 +110,12 @@
         // setTimeout(Chat__loadMore,500); // 0.5초 뒤에 실행 -> 무분별한 호출 야기
     }
 
+    // SSE 연결(통신)
+    // SSE -> 단방향 무전기
+    // 방향 : 서버 -> 클라이언트
     const sse = new EventSource("/sse/connect");
 
+    // 서버로부터 chat__messageAdded 라는 알림이 오면? Chat__loadMore 함수 실행
     sse.addEventListener('chat__messageAdded', e => {
         Chat__loadMore();
     });
